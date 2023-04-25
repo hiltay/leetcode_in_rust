@@ -1,27 +1,25 @@
 use std::collections::HashMap;
 
 struct Solution;
-// todo!()
 impl Solution {
     pub fn restore_ip_addresses(s: String) -> Vec<String> {
         let sv: Vec<char> = s.chars().collect();
         let mut result = Vec::new();
         let options = Solution::judge(&sv, 0);
         println!("{:?}", options);
-        for (p1,l1) in options{
+        for (p1, l1) in options {
             let options = Solution::judge(&sv, l1);
             println!("{:?}", options);
-            for (p2,l2) in options{
-                let options = Solution::judge(&sv, l1+l2);
+            for (p2, l2) in options {
+                let options = Solution::judge(&sv, l1 + l2);
                 println!("{:?}", options);
-                for (p3,l3) in options{
-                    let options = Solution::judge(&sv, l1+l2+l3);
+                for (p3, l3) in options {
+                    let options = Solution::judge(&sv, l1 + l2 + l3);
                     println!("{:?}", options);
-                    for (p4,l4) in options{
-                        if l1+l2+l3+l4 == s.len(){
-                            result.push(format!("{}.{}.{}.{}", p1,p2,p3,p4))
+                    for (p4, l4) in options {
+                        if l1 + l2 + l3 + l4 == s.len() {
+                            result.push(format!("{}.{}.{}.{}", p1, p2, p3, p4))
                         }
-                        
                     }
                 }
             }
@@ -37,10 +35,10 @@ impl Solution {
             if i >= sv.len() {
                 return options;
             }
-            if first && (sv[i] != '0' && sv[i] != '1' && sv[i] != '2' ){
-                return options;
-            }
             s.push(sv[i]);
+            if (s.parse::<i32>().unwrap()) > 255 {
+                s.pop();
+            }
             options.insert(s.clone(), s.len());
             if sv[i] == '0' {
                 if first {
@@ -54,7 +52,7 @@ impl Solution {
     }
 }
 fn main() {
-    let a = String::from("25525511135");
+    let a = String::from("11111111111111111");
 
     let result = Solution::restore_ip_addresses(a);
     println!("{:?}", result);
