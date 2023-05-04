@@ -1,4 +1,5 @@
 struct Solution;
+// Using bit manipulation approach
 // impl Solution {
 //     pub fn majority_element(nums: Vec<i32>) -> i32 {
 //         let mut cur_bit_count = 0;
@@ -21,6 +22,7 @@ struct Solution;
 //     }
 // }
 
+// Efficient approach using Boyer-Moore Voting algorithm
 impl Solution {
     pub fn majority_element(nums: Vec<i32>) -> i32 {
         let mut majority_candidate = 0;
