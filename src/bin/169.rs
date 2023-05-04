@@ -4,13 +4,9 @@ impl Solution {
         let mut cur_bit_count = 0;
         let mut result = 0;
         let mut mask = 0;
-        let half_length = nums.len()/2;
+        let half_length = nums.len() / 2;
         for _ in 0..31 {
-            mask = if mask != 0 {
-                mask << 1
-            }else{
-                1
-            };
+            mask = if mask != 0 { mask << 1 } else { 1 };
             for n in nums.iter() {
                 if n & mask != 0 {
                     cur_bit_count += 1;
@@ -25,7 +21,7 @@ impl Solution {
     }
 }
 fn main() {
-    let nums = vec![3,2,3];
+    let nums = vec![3, 2, 3];
     let result = Solution::majority_element(nums);
     println!("{}", result);
 }
