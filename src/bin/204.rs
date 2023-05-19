@@ -1,4 +1,5 @@
 struct Solution;
+// todo
 impl Solution {
     pub fn count_primes(n: i32) -> i32 {
         let mut count = 0;
