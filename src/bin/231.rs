@@ -1,22 +1,13 @@
-use std::collections::HashSet;
 struct Solution;
 impl Solution {
-    pub fn single_number(nums: Vec<i32>) -> i32 {
-        let mut set:HashSet<i32> = HashSet::new();
-        for i in nums{
-            if set.contains(&i){
-                set.remove(&i);
-            }else{
-                set.insert(i);
-            }
-        }
-        let res = set.drain().next().unwrap();
-        res
-        
+    pub fn is_power_of_two(n: i32) -> bool {
+        return n > 0 && (n & -n) == n;
     }
 }
 fn main() {
-    let nums = vec![4,1,2,1,2];
-    let result = Solution::single_number(nums);
+    // 1 == 0b00000001
+    // 3 == 0b00000011
+    // 4 == 0b00000100
+    let result = Solution::is_power_of_two(5);
     println!("{}", result);
 }
