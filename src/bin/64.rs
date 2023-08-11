@@ -33,6 +33,32 @@ impl Solution {
     }
 }
 
+
+/* DP
+impl Solution {
+    pub fn min_path_sum(grid: Vec<Vec<i32>>) -> i32 {
+        // mem[i][j] is cur min path sum
+        let mut mem = vec![vec![-1; grid[0].len()]; grid.len()];
+        for i in 0..grid.len() {
+            for j in 0..grid[0].len() {
+                if i == 0 && j == 0 {
+                    mem[i][j] = grid[i][j];
+                } else {
+                    if i == 0 {
+                        mem[i][j] = mem[i][j - 1] + grid[i][j];
+                    } else if j == 0 {
+                        mem[i][j] = mem[i - 1][j] + grid[i][j];
+                    } else {
+                        mem[i][j] = min(mem[i - 1][j], mem[i][j - 1]) + grid[i][j];
+                    }
+                }
+            }
+        }
+        return mem[grid.len() - 1][grid[0].len() - 1];
+    }
+}
+ */
+
 fn main() {
     let nums = vec![vec![1, 2, 3], vec![4,5,6], ];
     let result = Solution::min_path_sum(nums);
