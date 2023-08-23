@@ -50,9 +50,9 @@ impl Solution {
 
 fn main() {
     let grid = vec![
-        vec!['1', '1', '1', ],
-        vec!['0', '1', '0', ],
-        vec!['1', '1', '1', ],
+        vec!['1', '0', '1', ],
+        vec!['0', '0', '1', ],
+        vec!['1', '0', '1', ],
     ];
     let result = Solution::num_islands(grid);
     println!("{}", result);
