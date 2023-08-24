@@ -1,30 +1,27 @@
 struct Solution;
-// todo
+
 impl Solution {
     pub fn count_primes(n: i32) -> i32 {
-        let mut count = 0;
-        for i in 2..n {
-            if i == 2 {
-                count += 1;
-            } else if i % 2 != 0 {
-                // odd
-                let mut is_prime = true;
-                let mut cur = 3;
-                while cur < i {
-                    if i % cur == 0 {
-                        // not prime
-                        is_prime = false;
-                        break;
-                    }
-                    cur +=1;
-                }
-                if is_prime {
-                    count += 1;
-                }
+        if n == 0 || n == 1 {
+            return 0;
+        }
+        let mut is_prime = vec![true; n as usize];
+        is_prime[0] = false;
+        is_prime[1] = false;
 
+        let sqrt_n = (n as f64).sqrt() as usize;
+
+        for i in 2..=sqrt_n {
+            if is_prime[i] {
+                let mut j = i * i;
+                while j < n as usize {
+                    is_prime[j] = false;
+                    j += i;
+                }
             }
         }
-        count
+
+        is_prime.iter().filter(|&&x| x).count() as i32
     }
 }
 
