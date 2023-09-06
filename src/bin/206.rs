@@ -46,7 +46,6 @@ fn main() {
         });
         head = Some(new_node);
     }
-    head = None;
     println!("{:?}", head);
     let result = Solution::reverse_list(head);
     println!("{:?}", result);
